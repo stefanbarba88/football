@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add season{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Add season</h1>
+{% for message in app.flashes('notice') %}
+        <p> {{message}} </p>
+{% endfor %}
+    List of seasons:
+    <ul>
+     {% for season in seasons %}
+        <li> {{season.title}} </li>
+{% endfor %}
+        
+    </ul>
+     <form action="{{path('season-create')}}" method="POST"> 
+    <div class="form-group">
+      <label for="season">Season</label>
+      <input type="text"
+        class="form-control" name="season" id="" aria-describedby="helpId" placeholder="Insert season" required>
+
+    </div>
+   
+  <button type="submit" class="btn btn-primary">Insert</button>
+    
+    </form>
+</div>
+{% endblock %}
